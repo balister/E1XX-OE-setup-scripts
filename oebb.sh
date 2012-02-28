@@ -60,7 +60,7 @@ else
     #--------------------------------------------------------------------------
     # Specify distribution information
     #--------------------------------------------------------------------------
-    DISTRO="angstrom-2008.1"
+    DISTRO="angstrom-2010.x"
     DISTRO_DIRNAME=`echo $DISTRO | sed s#[.-]#_#g`
 
     echo "export DISTRO=\"${DISTRO}\"" > ~/.oe/environment-2008
@@ -245,7 +245,7 @@ function update_oe()
         if [ ! -d  ${OE_SOURCE_DIR}/openembedded/conf ]; then
             rm -rf  ${OE_SOURCE_DIR}/openembedded/
             echo Checking out OpenEmbedded
-            git clone git://github.com/openembedded/openembedded.git ${OE_SOURCE_DIR}/openembedded
+            git clone git://github.com/balister/openembedded.git ${OE_SOURCE_DIR}/openembedded
             cd ${OE_SOURCE_DIR}/openembedded
             if [ ! -r ${OE_COMMIT_ID} ];
             then
@@ -253,7 +253,7 @@ function update_oe()
                 git checkout -b release-2011.03-angstrom ${OE_COMMIT_ID}
             else
                 echo "Checking out OE, depending on your git version you might get a harmless, what git alarmingly calls 'fatal' error. It just means the branch already exists."
-                git checkout -b 2011.03-maintenance origin/2011.03-maintenance || true
+                git checkout -b ettus-e1xx origin/ettus-e1xx || true
             fi
         else
             echo Updating OpenEmbedded
